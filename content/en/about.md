@@ -6,20 +6,20 @@ sidebar:
 ---
 #### 何夕2077 / justlovemaki
 
-My fingers have been tapping code for a decade, and honestly, a bit of the old spark was fading. Then, *bam*! 💥 I caught wind of the AI revolution, and now I'm absolutely hyped to jump into the fray!
+For a decade, code cooled my fingertips, and unexpressed frustrations simmered within. But then, the storm of AI began to roar! Now, I'm ready to throw myself into the fray and conquer the skies. ✨
 
-#### My Coding Philosophy 💪
+#### My Code Philosophy 💡
 
-Tech for the people!
+> Technology serves the people.
 
-#### My Masterpieces ✨
+#### My Key Projects 🛠️
 
-*   **[Open Source Contribution: CloudFlare-AI-Image](https://github.com/justlovemaki/CloudFlare-AI-Image)**:
-    *   This **AI image generation script** totally runs on Cloudflare Workers. 📸
-*   **[Open Source Contribution: CloudFlare-AI-Insight-Daily](https://github.com/justlovemaki/CloudFlare-AI-Insight-Daily)**:
-    *   This **content aggregation and generation platform**, powered by Cloudflare Workers, fetches all the latest AI buzz for you daily. Think industry news, trending open-source projects, groundbreaking academic papers, and tech influencer chatter. 📈
-*   Wanna see more project details? Check out my [GitHub](https://github.com/justlovemaki)!
+*   **[Open Source Contribution/CloudFlare-AI-Image](https://github.com/justlovemaki/CloudFlare-AI-Image)**:
+    *   An AI image generation script, powered by Cloudflare Worker.
+*   **[Open Source Contribution/CloudFlare-AI-Insight-Daily](https://github.com/justlovemaki/CloudFlare-AI-Insight-Daily)**:
+    *   This content aggregation and generation platform, powered by Cloudflare Workers, is your daily go-to for the latest AI buzz! It curates industry news, hot open-source projects, cutting-edge research papers, and even insights from tech big shots on social media.
+*   For more project details, check out my [GitHub](https://github.com/justlovemaki).
 
-#### What I'm Diving Into Now 🚀
+#### My Current Deep Dives 🚀
 
-I'm absolutely hooked on **LLM applications and website SEO** right now. I'm deep-diving into learning and getting hands-on with both! 🧠🔎
+Right now, I'm super fascinated by LLM applications and website SEO. I'm actively diving into learning and getting my hands dirty with both!
