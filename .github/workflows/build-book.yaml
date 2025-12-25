@@ -10,7 +10,7 @@ on:
       source_branch:
         description: '要拉取的源分支'
         required: true
-        default: 'main' # <<< 请修改为你的源分支
+        default: 'book' # <<< 请修改为你的源分支
 
   # 也可以设置定时触发，例如每天凌晨1点 (UTC时间)
   schedule:
