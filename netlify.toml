@@ -1,0 +1,122 @@
+# ===========================================
+# Netlify 配置文件 - Hextra AI Insight Daily
+# ===========================================
+
+[build]
+  # 发布目录（Hugo 默认输出目录）
+  publish = "public"
+  # 构建命令
+  command = "hugo --gc --minify"
+
+# 构建环境配置
+[build.environment]
+  # Go 版本（Hugo 依赖）
+  GO_VERSION = "1.24"
+  # Hugo 版本
+  HUGO_VERSION = "0.147.9"
+  # 时区设置
+  TZ = "Asia/Shanghai"
+
+# 生产环境配置
+[context.production]
+  command = "hugo --gc --minify"
+  [context.production.environment]
+    HUGO_ENV = "production"
+
+# 预览部署配置（Pull Request）
+[context.deploy-preview]
+  command = "hugo --gc --minify --buildFuture"
+  [context.deploy-preview.environment]
+    HUGO_ENV = "development"
+
+# 分支部署配置
+[context.branch-deploy]
+  command = "hugo --gc --minify"
+  [context.branch-deploy.environment]
+    HUGO_ENV = "development"
+
+# ===========================================
+# 重定向规则
+# ===========================================
+
+# 确保所有页面都能正确访问
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+  force = false
+
+# 如果有旧的重定向需求，可以在这里添加
+# [[redirects]]
+#   from = "/old-path"
+#   to = "/new-path"
+#   status = 301
+
+# ===========================================
+# 缓存策略
+# ===========================================
+
+# 默认缓存策略（不缓存 HTML）
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+    X-Content-Type-Options = "nosniff"
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+
+# 图片文件缓存（长期缓存）
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# CSS 文件缓存（长期缓存）
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# JavaScript 文件缓存（长期缓存）
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 字体文件缓存（长期缓存）
+[[headers]]
+  for = "/fonts/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# 静态资源缓存（长期缓存）
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# RSS Feed 缓存（短期缓存）
+[[headers]]
+  for = "/rss.xml"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, must-revalidate"
+    Content-Type = "application/xml; charset=utf-8"
+
+# ===========================================
+# 插件配置（可选）
+# ===========================================
+
+# 如果需要使用 Netlify 插件，可以在这里配置
+# [[plugins]]
+#   package = "@netlify/plugin-lighthouse"
+#   [plugins.inputs]
+#     budget_path = "./lighthouse-budget.json"
+
+# ===========================================
+# 环境变量（可选，也可以在 Netlify 界面配置）
+# ===========================================
+
+# [context.production.environment]
+#   APP_BASE_URL = "https://your-site.netlify.app"
+#   IMAGE_PROXY_URL = ""
+#   FOLO_IMAGE_PROXY_URL = ""
