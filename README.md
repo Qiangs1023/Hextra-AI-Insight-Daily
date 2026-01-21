@@ -1,6 +1,6 @@
 # Hextra AI Insight Daily AI洞察日报前端 🤖
 
-一个基于 [Hextra Starter Template](https://github.com/imfing/hextra-starter-template) 和 [CloudFlare-AI-Insight-Daily](https://github.com/justlovemaki/CloudFlare-AI-Insight-Daily) 的全自动化 AI 新闻发布项目。
+一个基于 [Hextra Starter Template](https://github.com/imfing/hextra-starter-template) 和 [CloudFlare-AI-Insight-Daily](https://github.com/Qiangs1023/CloudFlare-AI-Insight-Daily) 的全自动化 AI 新闻发布项目。
 
 > ✨ **项目愿景**：每日清晨，自动为您抓取、汇总并发布最新的 AI 行业动态，让您轻松掌握前沿资讯。
 
@@ -10,7 +10,7 @@
 
 本项目结合了强大的后端自动化脚本与优雅的前端展示模板，旨在打造一个零成本、免维护的个人 AI 新闻聚合站。
 
-*   **后端驱动**：核心逻辑由 [CloudFlare-AI-Insight-Daily](https://github.com/justlovemaki/CloudFlare-AI-Insight-Daily) 提供，利用 Cloudflare Workers 和 AI 实现新闻内容的自动化处理。
+*   **后端驱动**：核心逻辑由 [CloudFlare-AI-Insight-Daily](https://github.com/Qiangs1023/CloudFlare-AI-Insight-Daily) 提供，利用 Cloudflare Workers 和 AI 实现新闻内容的自动化处理。
 *   **前端呈现**：网站基于 [Hextra](https://imfing.github.io/hextra/) 主题构建，风格现代、响应式，并针对阅读进行了优化。
 
 ### ✨ 主要特性
@@ -47,7 +47,7 @@
 
 点击下方按钮，一键将项目部署到 Netlify：
 
-[![部署到 Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/justlovemaki/Hextra-AI-Insight-Daily)
+[![部署到 Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Qiangs1023/Hextra-AI-Insight-Daily)
 
 ---
 
@@ -55,5 +55,5 @@
 
 我们欢迎任何形式的贡献！如果您有好的想法或发现了 Bug，请随时：
 
-*   提交一个 [Issue](https://github.com/justlovemaki/Hextra-AI-Insight-Daily/issues)
-*   或者创建一个 [Pull Request](https://github.com/justlovemaki/Hextra-AI-Insight-Daily/pulls)
+*   提交一个 [Issue](https://github.com/Qiangs1023/Hextra-AI-Insight-Daily/issues)
+*   或者创建一个 [Pull Request](https://github.com/Qiangs1023/Hextra-AI-Insight-Daily/pulls)
