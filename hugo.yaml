@@ -47,14 +47,14 @@ menu:
       name: 博客
       pageRef: /blog
       weight: 2
-    - identifier: about      
+    - identifier: about
       name: 关于我 ↗
       url: "https://github.com/Qiangs1023"
       weight: 3
-    - identifier: github   
-      name: 数字旷野
+    - identifier: github
+      name: 同性交友
       weight: 4
-      url: "https://github.com/Qiangs1023/CloudFlare-AI-Insight-Daily"
+      url: "https://github.com/Qiangs1023/Hextra-AI-Insight-Daily"
       params:
         icon: github
 
@@ -69,16 +69,16 @@ params:
   author:
     name: "数字旷野 kyinsight | 精选AI新闻与工具 | 洞悉AI前沿动态"
     bio: "去海边整点薯条"
-    email: "sunqiang323@163.com"
-    website: "https://kyinsight.netlify.app/about/"
+    email: "your-email@example.com"
+    website: "https://your-site.netlify.app/about/"
     social:
       - name: "GitHub"
         url: "https://github.com/Qiangs1023"
-        
+
   publisher:
-    type: "Person" 
-    name: "数字旷野 kyinsight | 精选AI新闻与工具 | 洞悉AI前沿动态"
-    url: "https://kyinsight.netlify.app/about/"
+    type: "Person"
+    name: "何夕2077的AI资讯日报 | 精选AI新闻与工具 | 洞悉AI前沿动态"
+    url: "https://your-site.netlify.app/about/"
     sameAs:
       - "https://github.com/Qiangs1023"
       

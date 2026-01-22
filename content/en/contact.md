@@ -20,7 +20,7 @@ sidebar:
 
 *   **个人微信 (Wechat):**
     *   {{< cards >}}
-        {{< card link="https://raw.githubusercontent.com/justlovemaki/CloudFlare-AI-Insight-Daily/refs/heads/main/docs/images/wechat.png" title="个人微信" subtitle="欢迎加我交流" image="https://raw.githubusercontent.com/justlovemaki/CloudFlare-AI-Insight-Daily/refs/heads/main/docs/images/wechat.png">}}
+        {{< card link="/7fd5414c57125392f6a3915e0d7a3de4.jpg" title="个人微信" subtitle="欢迎加我交流" image="/7fd5414c57125392f6a3915e0d7a3de4.jpg">}}
         {{< /cards >}}
 
 *   **工作时间 (Office Hours):**

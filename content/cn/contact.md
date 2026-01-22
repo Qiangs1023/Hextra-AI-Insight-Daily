@@ -16,11 +16,11 @@ sidebar:
 ## **联系方式**
 
 *   **电子邮件 (Email):**
-    *   [justlikemaki@qq.com](mailto:justlikemaki@qq.com)
+    *   [sunqiang323@163.com](mailto:sunqiang323@163.com)
 
 *   **个人微信 (Wechat):**
     *   {{< cards >}}
-        {{< card link="https://raw.githubusercontent.com/justlovemaki/CloudFlare-AI-Insight-Daily/refs/heads/main/docs/images/wechat.png" title="个人微信" subtitle="欢迎加我交流" image="https://raw.githubusercontent.com/justlovemaki/CloudFlare-AI-Insight-Daily/refs/heads/main/docs/images/wechat.png">}}
+        {{< card link="https://raw.githubusercontent.com/justlovemaki/CloudFlare-AI-Insight-Daily/refs/heads/main/docs/images/wechat_qiang.jpg" title="个人微信" subtitle="欢迎加我交流" image="https://raw.githubusercontent.com/justlovemaki/CloudFlare-AI-Insight-Daily/refs/heads/main/docs/images/wechat_qiang.jpg">}}
         {{< /cards >}}
 
 *   **工作时间 (Office Hours):**

@@ -1,5 +1,5 @@
 ---
-linkTitle: AI Daily
+linkTitle: Daily insight
 title: AI Daily-AI资讯日报
 breadcrumbs: false
 next: /2026-01/2026-01-21
@@ -10,7 +10,7 @@ cascade:
 
 ## AI资讯日报 2026/1/22
 
->  `AI资讯` | `每日早读` | `全网数据聚合` | `前沿科学探索` | `行业自由发声` | `开源创新力量` | `AI与人类未来` | [访问网页版↗️](https://ai.hubtoday.app/) | [进群交流🤙](https://source.hubtoday.app/logo/wechat-qun.jpg)
+>  `AI资讯` | `每日早读` | `全网数据聚合` | `前沿科学探索` | `行业自由发声` | `开源创新力量` | `AI与人类未来` | [访问网页版↗️](https://kyinsight.netlify.app/) 
 
 
 
