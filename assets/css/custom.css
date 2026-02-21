@@ -1,73 +1,498 @@
 /* =================================================================== */
-/*                      Original User Styles                           */
+/*                     极简风格 - Minimalist Theme                     */
 /* =================================================================== */
+/* 
+ * 设计理念：参考 Dan Koe 的极简风格
+ * - 白底黑字 / 黑底白字 高对比度
+ * - 充足留白
+ * - 简洁的线条和边框
+ * - 去除多余装饰元素
+ */
 
+/* ------------------------------------------------------------------- */
+/*                      全局字体设置                                    */
+/* ------------------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* ------------------------------------------------------------------- */
+/*                      浅色主题 - 极简白                              */
+/* ------------------------------------------------------------------- */
+html:not(.dark) {
+  --primary-hue: 0deg;
+  --primary-saturation: 0%;
+  --primary-lightness: 0%;
+  
+  --hx-text-gray-500: #525252;
+  --hx-text-gray-600: #3f3f3f;
+  --hx-text-gray-700: #262626;
+  --hx-text-gray-900: #0a0a0a;
+  
+  --hx-border-gray-200: #e5e5e5;
+  --hx-border-gray-300: #d4d4d4;
+  
+  /* 主色调 - 纯黑 */
+  --accent-color: #000000;
+}
+
+/* 浅色主题 - 整体背景 */
+html:not(.dark) body {
+  background-color: #ffffff;
+}
+
+/* 浅色主题 - 导航栏 */
+html:not(.dark) .nav-container,
+html:not(.dark) .nav-container-blur {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-bottom: 1px solid #e5e5e5;
+  backdrop-filter: blur(8px);
+}
+
+html:not(.dark) .nav-container a,
+html:not(.dark) .nav-container button {
+  color: #000000;
+}
+
+html:not(.dark) .nav-container a:hover,
+html:not(.dark) .nav-container button:hover {
+  color: #525252;
+}
+
+/* 浅色主题 - 链接 */
+html:not(.dark) .content :where(a):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html:not(.dark) .content :where(a):not(:where([class~=not-prose],[class~=not-prose] *)):hover {
+  color: #525252;
+}
+
+/* 浅色主题 - 标题 */
+html:not(.dark) .content :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)),
+html:not(.dark) .content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)),
+html:not(.dark) .content :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)),
+html:not(.dark) .content :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  color: #000000;
+  font-weight: 600;
+}
+
+html:not(.dark) .content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 0.5rem;
+}
+
+/* 浅色主题 - 代码块 */
+html:not(.dark) .content :where(code):not(:where(.hextra-code-block code,[class~=not-prose],[class~=not-prose] *)) {
+  background-color: #f5f5f5;
+  color: #000000;
+  border: none;
+  font-weight: 500;
+}
+
+html:not(.dark) .hextra-code-block pre,
+html:not(.dark) .hextra-code-block .filename {
+  background-color: #fafafa;
+  border: 1px solid #e5e5e5;
+}
+
+/* 浅色主题 - 侧边栏 */
+html:not(.dark) .sidebar-container {
+  background-color: #fafafa;
+  border-right: 1px solid #e5e5e5;
+}
+
+html:not(.dark) .sidebar-container a {
+  color: #262626;
+}
+
+html:not(.dark) .sidebar-container a:hover {
+  color: #000000;
+  background-color: #f5f5f5;
+}
+
+html:not(.dark) .sidebar-active-item {
+  color: #000000 !important;
+  font-weight: 600;
+  background-color: #f0f0f0;
+  border-left: 3px solid #000000;
+}
+
+/* 浅色主题 - 卡片 */
+html:not(.dark) .hextra-card {
+  background-color: #ffffff;
+  border: 1px solid #e5e5e5;
+  color: #262626;
+}
+
+html:not(.dark) .hextra-card:hover {
+  border-color: #000000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* 浅色主题 - 引用块 */
+html:not(.dark) .content :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  border-left: 3px solid #000000;
+  color: #525252;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* 浅色主题 - 表格 */
+html:not(.dark) .content table {
+  border: 1px solid #e5e5e5;
+}
+
+html:not(.dark) .content table th {
+  background-color: #fafafa;
+  border-bottom: 2px solid #000000;
+}
+
+html:not(.dark) .content table td {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+/* 浅色主题 - 强调文字 */
+html:not(.dark) strong {
+  color: #000000;
+  font-weight: 600;
+}
+
+/* 浅色主题 - 页脚 */
+html:not(.dark) .footer-wrapper,
+html:not(.dark) .hextra-footer {
+  background-color: #fafafa;
+  border-top: 1px solid #e5e5e5;
+  color: #525252;
+}
+
+html:not(.dark) .footer-links a:hover,
+html:not(.dark) .footer-copyright a:hover {
+  color: #000000;
+}
+
+/* 浅色主题 - 徽章 */
+html:not(.dark) .hextra-badge {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+html:not(.dark) .hextra-badge:hover {
+  background-color: #262626;
+}
+
+/* 浅色主题 - 搜索框 */
+html:not(.dark) .search-input {
+  border: 1px solid #e5e5e5;
+  background-color: #fafafa;
+}
+
+html:not(.dark) .search-input:focus {
+  border-color: #000000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 浅色主题 - 标签页 */
+html:not(.dark) .hextra-tabs-toggle[data-state=selected] {
+  border-bottom: 2px solid #000000;
+  color: #000000;
+}
+
+/* ------------------------------------------------------------------- */
+/*                      深色主题 - 极简黑                              */
+/* ------------------------------------------------------------------- */
+html.dark {
+  --primary-hue: 0deg;
+  --primary-saturation: 0%;
+  --primary-lightness: 100%;
+  
+  --accent-color: #ffffff;
+}
+
+/* 深色主题 - 整体背景 */
+html.dark body,
+html.dark .hextra-footer,
+html.dark .nav-container {
+  background-color: #0a0a0a;
+}
+
+html.dark .nav-container-blur {
+  background-color: rgba(10, 10, 10, 0.9) !important;
+}
+
+/* 深色主题 - 导航栏 */
+html.dark .nav-container {
+  border-bottom: 1px solid #262626;
+}
+
+html.dark .nav-container a,
+html.dark .nav-container button {
+  color: #ffffff;
+}
+
+html.dark .nav-container a:hover,
+html.dark .nav-container button:hover {
+  color: #a3a3a3;
+}
+
+/* 深色主题 - 链接 */
+html.dark .content :where(a):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+html.dark .content :where(a):not(:where([class~=not-prose],[class~=not-prose] *)):hover {
+  color: #a3a3a3;
+}
+
+/* 深色主题 - 标题 */
+html.dark .content :where(h1):not(:where([class~=not-prose],[class~=not-prose] *)),
+html.dark .content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)),
+html.dark .content :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)),
+html.dark .content :where(h4):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+html.dark .content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  border-bottom: 1px solid #262626;
+  padding-bottom: 0.5rem;
+}
+
+/* 深色主题 - 代码块 */
+html.dark .content :where(code):not(:where(.hextra-code-block code,[class~=not-prose],[class~=not-prose] *)) {
+  background-color: #171717;
+  color: #ffffff;
+  border: none;
+  font-weight: 500;
+}
+
+html.dark .hextra-code-block pre,
+html.dark .hextra-code-block .filename {
+  background-color: #0f0f0f;
+  border: 1px solid #262626;
+}
+
+html.dark .hextra-code-block pre code {
+  color: #e5e5e5;
+}
+
+/* 深色主题 - 侧边栏 */
+html.dark .sidebar-container {
+  background-color: #0f0f0f;
+  border-right: 1px solid #262626;
+}
+
+html.dark .sidebar-container a {
+  color: #a3a3a3;
+}
+
+html.dark .sidebar-container a:hover {
+  color: #ffffff;
+  background-color: #171717;
+}
+
+html.dark .sidebar-active-item {
+  color: #ffffff !important;
+  font-weight: 600;
+  background-color: #171717;
+  border-left: 3px solid #ffffff;
+}
+
+/* 深色主题 - 卡片 */
+html.dark .hextra-card {
+  background-color: #0f0f0f;
+  border: 1px solid #262626;
+  color: #e5e5e5;
+}
+
+html.dark .hextra-card:hover {
+  border-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.05);
+}
+
+/* 深色主题 - 引用块 */
+html.dark .content :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  border-left: 3px solid #ffffff;
+  color: #a3a3a3;
+  background-color: #0f0f0f;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+}
+
+/* 深色主题 - 表格 */
+html.dark .content table {
+  border: 1px solid #262626;
+}
+
+html.dark .content table th {
+  background-color: #0f0f0f;
+  border-bottom: 2px solid #ffffff;
+}
+
+html.dark .content table td {
+  border-bottom: 1px solid #262626;
+}
+
+/* 深色主题 - 强调文字 */
+html.dark strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* 深色主题 - 页脚 */
+html.dark .footer-wrapper,
+html.dark .hextra-footer {
+  background-color: #0f0f0f;
+  border-top: 1px solid #262626;
+  color: #a3a3a3;
+}
+
+html.dark .footer-links a:hover,
+html.dark .footer-copyright a:hover {
+  color: #ffffff;
+}
+
+/* 深色主题 - 徽章 */
+html.dark .hextra-badge {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+html.dark .hextra-badge:hover {
+  background-color: #e5e5e5;
+}
+
+/* 深色主题 - 搜索框 */
+html.dark .search-input {
+  border: 1px solid #262626;
+  background-color: #0f0f0f;
+}
+
+html.dark .search-input:focus {
+  border-color: #ffffff;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* 深色主题 - 标签页 */
+html.dark .hextra-tabs-toggle[data-state=selected] {
+  border-bottom: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+/* 深色主题 - 搜索结果 */
+html.dark .search-wrapper li .active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+html.dark .search-wrapper .match {
+  color: #ffffff;
+}
+
+/* ------------------------------------------------------------------- */
+/*                      隐藏右侧目录栏                                  */
+/* ------------------------------------------------------------------- */
+.toc-container,
+.hextra-toc,
+aside[class*="toc"] {
+  display: none !important;
+}
+
+/* ------------------------------------------------------------------- */
+/*                      通用极简样式                                    */
+/* ------------------------------------------------------------------- */
+
+/* 标题样式 */
 h1:first-of-type {
-  /* display: none; */
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-code, kbd, samp, pre {
-  font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,liberation mono,courier new,monospace;
-}
-
-.content ol li {
+.content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  font-size: 1.75rem;
+  margin-top: 3rem;
   margin-bottom: 1.5rem;
+}
+
+.content :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)) {
+  font-size: 1.35rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* 段落样式 */
+.content p {
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* 列表样式 */
+.content ol li,
+.content ul li {
+  margin-bottom: 1rem;
+  line-height: 1.7;
 }
 
 .content ol li strong:first-of-type {
   display: block;
   margin-bottom: 0.5rem;
   width: 100%;
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 600;
 }
 
-.content ol li p strong:first-of-type {
-  display: block;
-  margin-bottom: 0.5rem;
-  width: 100%;
-  font-size: 1.2rem;
-}
-
+/* 图片样式 */
 .content :where(img):not(:where([class~=not-prose],[class~=not-prose] *)) {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-radius: .375rem;
+  margin: 1.5rem auto;
+  border-radius: 8px;
   max-width: 100%;
-  min-width: 100%;
-  /* height: clamp(250px, 35vh, 500px);
-  object-fit: cover; */
 }
 
-.content table tbody tr td :where(img):not(:where([class~=not-prose],[class~=not-prose] *)){
+.content table tbody tr td :where(img):not(:where([class~=not-prose],[class~=not-prose] *)) {
   height: auto;
+  max-width: 150px;
 }
 
+/* 表格样式 */
 .content table {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 2rem auto;
   width: auto;
   display: table;
+  border-collapse: collapse;
 }
 
+.content table th,
+.content table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+/* 视频样式 */
 video {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  border-radius: .375rem;
+  margin: 1.5rem auto;
+  border-radius: 8px;
   max-width: 100%;
-  min-width: 100%;
 }
 
+/* 分隔线 */
 br {
-    display: block;
-    content: "";
-    margin-top: 20px;
+  display: block;
+  content: "";
+  margin-top: 1.5rem;
 }
 
-footer .hx-max-w-screen-xl{
+/* ------------------------------------------------------------------- */
+/*                      页脚样式                                        */
+/* ------------------------------------------------------------------- */
+footer .hx-max-w-screen-xl {
   max-width: 100%;
 }
 
@@ -75,7 +500,7 @@ footer .hx-max-w-screen-xl{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 1.5rem 0.5rem;
+  padding: 2rem 1rem;
   width: 100%;
   flex-direction: column;
 }
@@ -91,274 +516,119 @@ footer .hx-max-w-screen-xl{
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .footer-copyright {
-  font-size: 0.9em;
-  opacity: 0.8;
+  font-size: 0.875rem;
 }
 
 .footer-links a,
 .footer-copyright a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.3s ease, text-decoration 0.3s ease;
-}
-
-.footer-copyright a:is(html[class~=dark] *){
-  color:#a1a8b4;
+  transition: color 0.2s ease;
 }
 
 .footer-links a:hover,
 .footer-copyright a:hover {
-  color: #d8d8d8;
   text-decoration: underline;
 }
 
+/* ------------------------------------------------------------------- */
+/*                      导航栏极简化                                    */
+/* ------------------------------------------------------------------- */
+.nav-container {
+  box-shadow: none !important;
+}
+
+.hextra-nav-menu-item {
+  font-weight: 500;
+}
+
+/* Logo 样式 */
+.hextra-nav-logo {
+  font-weight: 700;
+  font-size: 1.25rem;
+}
+
+/* ------------------------------------------------------------------- */
+/*                      内容区域宽度调整                                */
+/* ------------------------------------------------------------------- */
+.content {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.hextra-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* 主页面全宽 */
+.home-page .content {
+  max-width: 100%;
+}
+
+/* ------------------------------------------------------------------- */
+/*                      卡片网格极简化                                  */
+/* ------------------------------------------------------------------- */
+.hextra-cards {
+  gap: 1.5rem;
+}
+
+.hextra-card {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.hextra-card:hover {
+  transform: translateY(-2px);
+}
+
+/* ------------------------------------------------------------------- */
+/*                      广告容器                                        */
+/* ------------------------------------------------------------------- */
 .ad-container,
 .google-auto-placed {
   text-align: center;
   max-width: 98%;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   overflow: hidden;
 }
 
+/* ------------------------------------------------------------------- */
+/*                      代码块样式                                      */
+/* ------------------------------------------------------------------- */
 .hextra-code-block pre {
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-break: break-word;
+  border-radius: 8px;
 }
 
-.content :where(code):not(:where(.hextra-code-block code,[class~=not-prose],[class~=not-prose] *)) {
-  border-radius: 4px;
-  font-style: normal;
-  padding: 0.2em 0.4em;
-  font-size: 0.875em;
-  overflow-wrap: break-word;
-  word-break: break-word;
+.hextra-code-copy-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--bg-color);
 }
 
-.content blockquote p a {
-    /* display: none; */
-}
-
-.hextra-max-footer-width {
-    max-width: 100%;
-}
-
-/* =================================================================== */
-/*                 [FIX v2] Light Theme Contrast Fix                   */
-/* =================================================================== */
-
-/*
- * 通过重写 Hextra 主题的根CSS变量来从根本上修复浅色模式的对比度问题。
- * 这比单独覆盖每个元素的样式更有效、更全面。
- * :not(.dark) 选择器确保这些规则只在浅色模式下生效。
-*/
-html:not(.dark) {
-  /*
-   * -- 文本颜色修复 --
-   * Hextra 默认的灰色文本（如 --hx-text-gray-600 和 500）在白色背景上对比度不足。
-   * 我们将它们重新定义为更深的颜色。
-  */
-  --hx-text-gray-500: #4a5568;  /* 加深的中灰色 (原: #6b7280) */
-  --hx-text-gray-600: #2d3748;  /* 加深的深灰色 (原: #4b5563) */
-  --hx-text-gray-700: #1a202c;  /* 更深的近黑色 (原: #374151) */
-  --hx-text-gray-900: #111827;  /* 确保标题等为最深的颜色 */
-
-  /*
-   * -- 边框颜色修复 --
-   * 默认的浅灰色边框在白色背景上几乎看不见。
-   * 稍微加深它们可以提高组件的可见性。
-  */
-  --hx-border-gray-200: #d1d5db; /* 加深的浅边框 (原: #e5e7eb) */
-  --hx-border-gray-300: #b5bac0; /* 加深的中边框 (原: #d1d5db) */
-
-  /*
-   * -- 主题链接/焦点色修复 --
-   * 调整主色调的亮度和饱和度，使其在白色背景上更清晰。
-   * 这里我们使用一个更深的蓝色调。
-  */
-  --primary-hue: 212deg;         /* 深蓝色调 */
-  --primary-saturation: 82%;
-  --primary-lightness: 45%;      /* 降低亮度以增加对比度 */
-}
-
-/* 
- * -- 行内代码块的再次确认修复 --
- * 确保 `<code>` 标签即使不使用CSS变量也能有高对比度。
-*/
-html:not(.dark) .content :where(code):not(:where(.hextra-code-block code,[class~=not-prose],[class~=not-prose] *)) {
-  background-color: #eef0f2; /* 一个清晰可见的浅灰色背景 */
-  color: #1a202c;            /* 深色文本，确保可读性 */
-}
-
-
-/* =================================================================== */
-/*                      Dark Theme "Pornhub" Style                     */
-/* =================================================================== */
-html.dark {
-  --primary-hue: 36deg;
-  --primary-saturation: 100%;
-  --primary-lightness: 50%;
-}
-
-.hextra-footer:is(html[class~=dark] *),
-.nav-container:is(html[class~=dark] *),
-body:is(html[class~=dark] *) {
-  background-color: #1c1c1c;
-}
-
-.nav-container-blur:is(html[class~=dark] *) {
-    background-color: rgba(28, 28, 28, 0.8) !important;
-}
-
-.nav-container a:is(html[class~=dark] *),
-.nav-container svg:is(html[class~=dark] *) {
-  color: #ffffff;
-  transition: color 0.2s ease-in-out;
-}
-
-.nav-container a:hover:is(html[class~=dark] *),
-.nav-container a:hover svg:is(html[class~=dark] *),
-.nav-container button:hover svg:is(html[class~=dark] *) {
-  color: #ff9900 !important;
-}
-
-.hamburger-menu:is(html[class~=dark] *) {
-  color: #ffffff;
-}
-.hamburger-menu:hover:is(html[class~=dark] *) {
-  color: #ff9900 !important;
-}
-
-.content :where(code):not(:where(.hextra-code-block code,[class~=not-prose],[class~=not-prose] *)):is(html[class~=dark] *) {
-  background-color: #2a2a2a;
-  color: #ff9900;
-  border: 1px solid #444;
-}
-
-.hextra-code-block pre:is(html[class~=dark] *),
-.hextra-code-block .filename:is(html[class~=dark] *) {
-  background-color: #111;
-  border: 1px solid #444;
-}
-
-.hextra-code-block pre code span:is(html[class~=dark] *),
-.hextra-code-block pre code:is(html[class~=dark] *) {
-  font-style: normal !important;
-  color: #f0f0f0;
-}
-
-.dark .highlight .chroma .c, .dark .highlight .chroma .c1, .dark .highlight .chroma .cs { color: #8b949e !important; }
-.dark .highlight .chroma .k { color: #ff7b72 !important; }
-.dark .highlight .chroma .kc { color: #79c0ff !important; }
-.dark .highlight .chroma .s, .dark .highlight .chroma .s1, .dark .highlight .chroma .s2 { color: #a5d6ff !important; }
-.dark .highlight .chroma .nc { color: #f0883e !important; font-weight: 700; }
-.dark .highlight .chroma .nf { color: #d2a8ff !important; font-weight: 700; }
-
-.chroma .hl:is(html[class~=dark] *) {
-  background-color: rgba(255, 153, 0, 0.15) !important;
-}
-
-.hextra-code-copy-btn:hover:is(html[class~=dark] *) {
-  background-color: #2a2a2a;
-  color: #ff9900;
-}
-
-.content :where(a):not(:where([class~=not-prose],[class~=not-prose] *)):is(html[class~=dark] *),
-.content :where(blockquote):not(:where([class~=not-prose],[class~=not-prose] *)):is(html[class~=dark] *) {
-  color: #ff9900;
-  border-left-color: #ff9900;
-}
-.content :where(a):not(:where([class~=not-prose],[class~=not-prose] *)):hover:is(html[class~=dark] *) {
-  color: #fff;
-  text-decoration: underline;
-}
-.content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)):is(html[class~=dark] *) {
-  border-color: #444;
-}
-
-.hextra-card:is(html[class~=dark] *) {
-  background-color: #2a2a2a;
-  border: 1px solid #444;
-  color: #f0f0f0;
-}
-.hextra-card:hover:is(html[class~=dark] *) {
-  border-color: #ff9900;
-  box-shadow: 0 0 15px rgba(255, 153, 0, 0.2);
-}
-
-.hextra-badge:is(html[class~=dark] *) {
-  background-color: #ff9900;
-  color: #000;
-  font-weight: bold;
-}
-
-.sidebar-active-item:is(html[class~=dark] *) {
-  color: #ff9900 !important;
-  font-weight: bold;
-  background-color: rgba(255, 153, 0, 0.1);
-  border-radius: 4px;
-}
-.dark\:hover\:hx-bg-primary-100\/5:hover:is(html[class~=dark] *) {
-    background-color: rgba(255, 153, 0, 0.1);
-}
-.sidebar-container a:hover:is(html[class~=dark] *) {
-  color: #ff9900;
-}
-.sidebar-container a:is(html[class~=dark] *) {
-  color: #fff;
-}
-
-.search-wrapper li .active:is(html[class~=dark] *) {
-    background-color: rgba(255, 153, 0, 0.15);
-}
-.search-wrapper .match:is(html[class~=dark] *) {
-    color: #ff9900;
-}
-.search-input:is(html[class~=dark] *) {
-  border-color: #444;
-}
-.search-input:focus:is(html[class~=dark] *) {
-  border-color: #ff9900;
-}
-
-.hextra-tabs-toggle[data-state=selected]:is(html[class~=dark] *) {
-  border-bottom: 2px solid #ff9900;
-  color: #ff9900;
-}
-
-strong:is(html[class~=dark] *) {
-    color: #f90;
-    padding: 3px;
-}
-
-.content :where(h3):not(:where([class~=not-prose],[class~=not-prose] *)):is(html[class~=dark] *) {
-    color: #f90;
-}
-
-/* =================================================================== */
-/*          [FIX v3] Light Theme Footer Contrast Fix               */
-/* =================================================================== */
-
-/*
- * 目标：专门解决浅色主题下，页脚文本和链接颜色对比度不足的问题。
- * 原因：页脚的链接颜色被设置为 `inherit`，它继承了 Hextra 主题
- *      默认的浅灰色 body 文本颜色，导致在白色背景上难以阅读。
-*/
-
-/* 1. 为浅色模式下的整个页脚设置一个高对比度的基础文字颜色 */
-html:not(.dark) .footer-wrapper {
-  /* 使用深石板灰色，它在白色背景上具有非常高的对比度 (11.75:1) */
-  color: #2D3748;
-}
-
-/* 2. 为页脚链接在浅色模式下设置一个清晰的悬停 (hover) 效果 */
-/*    之前的 hover 颜色是为暗色模式设计的，在浅色模式下会看不见 */
-html:not(.dark) .footer-links a:hover,
-html:not(.dark) .footer-copyright a:hover {
-  /* 悬停时变为纯黑色，并保持下划线，提供清晰的视觉反馈 */
-  color: #000000;
+/* ------------------------------------------------------------------- */
+/*                      响应式调整                                      */
+/* ------------------------------------------------------------------- */
+@media (max-width: 768px) {
+  h1:first-of-type {
+    font-size: 2rem;
+  }
+  
+  .content :where(h2):not(:where([class~=not-prose],[class~=not-prose] *)) {
+    font-size: 1.5rem;
+  }
+  
+  .content {
+    padding: 0 1rem;
+  }
+  
+  .footer-links {
+    gap: 1rem;
+  }
 }

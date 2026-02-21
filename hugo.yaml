@@ -113,6 +113,7 @@ params:
 
   toc:
     displayTags: false
+    disable: true
   
   page:
     # full (100%), wide (90rem), normal (1280px)
