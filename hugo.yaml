@@ -32,32 +32,6 @@ markup:
   highlight:
     noClasses: false
 
-menu:
-  main:
-    - identifier: search
-      name: 搜索
-      weight: 10
-      params:
-        type: search
-    - identifier: documentation
-      name: 日报
-      pageRef: /
-      weight: 1
-    - identifier: blog
-      name: 博客
-      pageRef: /blog
-      weight: 2
-    - identifier: about      
-      name: 关于我 ↗
-      url: "https://github.com/Qiangs1023"
-      weight: 3
-    - identifier: github   
-      name: 同性交友
-      weight: 4
-      url: "https://github.com/Qiangs1023/Hextra-AI-Insight-Daily"
-      params:
-        icon: github
-
 params:
   adsenseId: "ca-pub-8136412975724403"
   umamiKey: "2b24e36d-6e56-499b-8b7e-aea4d308caff"
