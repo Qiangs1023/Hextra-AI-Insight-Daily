@@ -1,5 +1,5 @@
 ---
-title: 何夕2077的博客
+title: 数字旷野的博客
 type: blog
 cascade:
   type: blog
