@@ -123,5 +123,5 @@ Reddit热帖讨论中国AI🤖机器人进展。功夫机器人展示令人印�
 
 | 💬 **微信公众号** | 📹 **抖音** |
 | --- | --- |
-| 公众号：何夕2077  |   [自媒体账号](https://www.douyin.com/user/MS4wLjABAAAAwpwqPQlu38sO38VyWgw9ZjDEnN4bMR5j8x111UxpseHR9DpB6-CveI5KRXOWuFwG)|
-| ![微信公众号](https://source.hubtoday.app/logo/wechatgzh_20260218215501_244.jpg) | ![情报站](https://source.hubtoday.app/logo/7fc30805eeb831e1e2baa3a240683ca3.md.png) |
+| 公众号：数字旷野  |   [自媒体账号](https://www.douyin.com/user/MS4wLjABAAAAwpwqPQlu38sO38VyWgw9ZjDEnN4bMR5j8x111UxpseHR9DpB6-CveI5KRXOWuFwG)|
+| ![微信公众号](https://free.picui.cn/free/2026/02/21/69996c11ed3c1.jpg) | ![情报站](https://source.hubtoday.app/logo/7fc30805eeb831e1e2baa3a240683ca3.md.png) |
