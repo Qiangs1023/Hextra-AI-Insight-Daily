@@ -1,6 +1,6 @@
 <meta name="referrer" content="no-referrer">
-<meta name="twitter:image" content="{{ .Site.BaseURL }}/images/logo-dark.png">
-<meta name="og:image" content="{{ .Site.BaseURL }}/images/logo-dark.png">
+<meta name="twitter:image" content="https://free.picui.cn/free/2026/02/21/6999aa72625e6.png">
+<meta name="og:image" content="https://free.picui.cn/free/2026/02/21/6999aa72625e6.png">
 
 {{ if .Params.robots }}
   <meta name="robots" content="{{ .Params.robots }}">
@@ -380,3 +380,180 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {{- end }}
 {{ "<!-- LEAVING partial seo-schema.html -->" | safeHTML }}
+
+<!-- 历史日报下拉菜单 -->
+<style>
+.history-dropdown {
+  position: relative;
+  display: inline-block;
+  margin-left: 8px;
+}
+
+.history-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: 500;
+  color: inherit;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s;
+}
+
+.history-btn:hover {
+  background-color: rgba(128, 128, 128, 0.15);
+}
+
+.history-btn svg {
+  width: 14px;
+  height: 14px;
+  transition: transform 0.2s;
+}
+
+.history-dropdown.open .history-btn svg {
+  transform: rotate(180deg);
+}
+
+.history-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 4px;
+  min-width: 150px;
+  max-height: 350px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: all 0.2s ease;
+  z-index: 100;
+}
+
+html.dark .history-menu {
+  background: #1a1a1a;
+  border-color: #333;
+}
+
+.history-dropdown.open .history-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.history-menu-item {
+  display: block;
+  padding: 8px 14px;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.15s;
+}
+
+html.dark .history-menu-item {
+  color: #e5e5e5;
+}
+
+.history-menu-item:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+.history-menu-item.active {
+  font-weight: 600;
+  background-color: rgba(128, 128, 128, 0.08);
+}
+
+.history-menu::-webkit-scrollbar {
+  width: 6px;
+}
+
+.history-menu::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.history-menu::-webkit-scrollbar-thumb {
+  background: rgba(128, 128, 128, 0.3);
+  border-radius: 3px;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // 历史日报数据
+  var historyItems = [
+    { date: '2026-02-21', label: '02-21-日报', url: '/2026-02/2026-02-21/' },
+    { date: '2026-02-20', label: '02-20-日报', url: '/2026-02/2026-02-20/' },
+    { date: '2026-02-19', label: '02-19-日报', url: '/2026-02/2026-02-19/' },
+    { date: '2026-02-18', label: '02-18-日报', url: '/2026-02/2026-02-18/' },
+    { date: '2026-02-17', label: '02-17-日报', url: '/2026-02/2026-02-17/' },
+    { date: '2026-02-16', label: '02-16-日报', url: '/2026-02/2026-02-16/' },
+    { date: '2026-02-15', label: '02-15-日报', url: '/2026-02/2026-02-15/' },
+    { date: '2026-02-14', label: '02-14-日报', url: '/2026-02/2026-02-14/' },
+    { date: '2026-02-13', label: '02-13-日报', url: '/2026-02/2026-02-13/' },
+    { date: '2026-02-12', label: '02-12-日报', url: '/2026-02/2026-02-12/' },
+    { date: '2026-02-11', label: '02-11-日报', url: '/2026-02/2026-02-11/' },
+    { date: '2026-02-10', label: '02-10-日报', url: '/2026-02/2026-02-10/' },
+    { date: '2026-02-09', label: '02-09-日报', url: '/2026-02/2026-02-09/' },
+    { date: '2026-02-08', label: '02-08-日报', url: '/2026-02/2026-02-08/' },
+    { date: '2026-02-06', label: '02-06-日报', url: '/2026-02/2026-02-06/' },
+    { date: '2026-02-05', label: '02-05-日报', url: '/2026-02/2026-02-05/' },
+    { date: '2026-02-04', label: '02-04-日报', url: '/2026-02/2026-02-04/' },
+    { date: '2026-02-03', label: '02-03-日报', url: '/2026-02/2026-02-03/' },
+    { date: '2026-02-02', label: '02-02-日报', url: '/2026-02/2026-02-02/' },
+    { date: '2026-02-01', label: '02-01-日报', url: '/2026-02/2026-02-01/' },
+  ];
+
+  var currentPath = window.location.pathname;
+
+  // 创建下拉菜单 HTML
+  var dropdown = document.createElement('div');
+  dropdown.className = 'history-dropdown';
+  dropdown.id = 'historyDropdown';
+
+  var menuHtml = '<button class="history-btn" onclick="toggleHistoryMenu(event)">历史日报<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" /></svg></button><div class="history-menu" id="historyMenu">';
+
+  historyItems.forEach(function(item) {
+    var isActive = currentPath.includes(item.date) ? ' active' : '';
+    var langPrefix = currentPath.startsWith('/en/') ? '/en' : '';
+    menuHtml += '<a href="' + langPrefix + item.url + '" class="history-menu-item' + isActive + '">' + item.label + '</a>';
+  });
+
+  menuHtml += '</div>';
+  dropdown.innerHTML = menuHtml;
+
+  // 查找导航栏并插入菜单
+  var navContainer = document.querySelector('.nav-container .hx\:flex.hx\:items-center.hx\:gap-2');
+  if (navContainer) {
+    // 在搜索按钮之前插入
+    var searchBtn = navContainer.querySelector('[data-search]');
+    if (searchBtn) {
+      navContainer.insertBefore(dropdown, searchBtn);
+    } else {
+      navContainer.appendChild(dropdown);
+    }
+  }
+
+  // 点击外部关闭菜单
+  document.addEventListener('click', function(event) {
+    var dd = document.getElementById('historyDropdown');
+    if (dd && !dd.contains(event.target)) {
+      dd.classList.remove('open');
+    }
+  });
+});
+
+function toggleHistoryMenu(event) {
+  event.stopPropagation();
+  var dropdown = document.getElementById('historyDropdown');
+  if (dropdown) {
+    dropdown.classList.toggle('open');
+  }
+}
+</script>

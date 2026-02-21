@@ -1,6 +1,6 @@
 ---
-linkTitle: AI Daily
-title: AI Daily-AI资讯日报
+linkTitle: 数字旷野 日报
+title: 数字旷野 日报
 breadcrumbs: false
 comments: true
 next: /en/2026-02/2026-02-20
@@ -9,9 +9,8 @@ description: Your daily source for curated AI news, practical tools, and actiona
 cascade:
   type: docs
 ---
-## AI Daily Brief 2026/2/21
 
-> AI News | Daily Morning Read | Aggregated Web Data | Cutting-Edge Science Exploration | Industry Free Voice | Open Source Innovation Power | AI and Humanity's Future | [Visit Web Version ↗️](https://ai.hubtoday.app/) | [Join Group Chat 🤙](https://source.hubtoday.app/logo/wechat-qun.jpg)
+## AI Daily Brief 2026/2/21
 
 ### Today's Rundown
 

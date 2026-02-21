@@ -1,6 +1,6 @@
 ---
-linkTitle: AI Daily
-title: AI Daily-AI资讯日报
+linkTitle: 数字旷野 日报
+title: 数字旷野 日报
 breadcrumbs: false
 comments: true
 next: /2026-02/2026-02-20
@@ -10,8 +10,6 @@ cascade:
 ---
 
 ## AI资讯日报 2026/2/21
-
->  `AI资讯` | `每日早读` | `全网数据聚合` | `前沿科学探索` | `行业自由发声` | `开源创新力量` | `AI与人类未来` | [访问网页版↗️](https://ai.hubtoday.app/) | [进群交流🤙](https://source.hubtoday.app/logo/wechat-qun.jpg)
 
 ### **今日摘要**
 
