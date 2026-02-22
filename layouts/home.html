@@ -399,15 +399,19 @@
       </div>
     </div>
     
-    <!-- 分类标签 -->
+    <!-- 分类标签 - 动态从文章提取 -->
+    {{- $allTags := slice -}}
+    {{- range $pages -}}
+      {{- with .Params.tags -}}
+        {{- $allTags = $allTags | append . -}}
+      {{- end -}}
+    {{- end -}}
+    {{- $uniqueTags := $allTags | uniq -}}
     <div class="hn-tags">
       <button class="hn-tag active" data-tag="all">全部</button>
-      <button class="hn-tag" data-tag="AI">AI</button>
-      <button class="hn-tag" data-tag="开源">开源</button>
-      <button class="hn-tag" data-tag="工具">工具</button>
-      <button class="hn-tag" data-tag="研究">研究</button>
-      <button class="hn-tag" data-tag="产品">产品</button>
-      <button class="hn-tag" data-tag="行业">行业</button>
+      {{- range $uniqueTags -}}
+        <button class="hn-tag" data-tag="{{ . }}">{{ . }}</button>
+      {{- end -}}
     </div>
   </header>
 
@@ -418,7 +422,7 @@
       <article class="hn-item" data-tags="{{ with $page.Params.tags }}{{ delimit . "," }}{{ end }}">
         <div class="hn-item-meta">
           <span class="hn-index">{{ add $index 1 }}.</span>
-          <span class="hn-time">{{ $page.Date.Format "2006/01/02" }}</span>
+          <span class="hn-time">{{ if $page.Date }}{{ $page.Date.Format "2006/01/02" }}{{ else if $page.Lastmod }}{{ $page.Lastmod.Format "2006/01/02" }}{{ else }}{{ $page.File.TranslationBaseName }}{{ end }}</span>
         </div>
         <div class="hn-item-content">
           <h3 class="hn-item-title">
