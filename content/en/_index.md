@@ -1,13 +1,10 @@
 ---
-linkTitle: 数字旷野 日报
-title: 数字旷野 日报
-breadcrumbs: false
-comments: true
-next: /en/2026-02/2026-02-20
-description: Your daily source for curated AI news, practical tools, and actionable
-  tutorials to master Artificial Intelligence;
-cascade:
-  type: docs
+linkTitle: AI Insight Daily
+title: AI Insight Daily
+layout: home
+---
+
+Homepage uses Hacker News style list layout
 ---
 
 ## AI Daily Brief 2026/2/21
