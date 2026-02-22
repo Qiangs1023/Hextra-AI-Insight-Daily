@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{- $pages := where .Site.RegularPages "Section" "neq "" -}}
+{{- $pages := where .Site.RegularPages "Section" "neq" "" -}}
 {{- $pages = $pages | first 50 -}}
 
 <div class="hn-container">
