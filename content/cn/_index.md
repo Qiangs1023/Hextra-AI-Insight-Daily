@@ -1,15 +1,10 @@
 ---
 linkTitle: 数字旷野 日报
 title: 数字旷野 日报
-breadcrumbs: false
-comments: true
-next: /2026-02/2026-02-20
-description: "个人每日整理的AI资讯站。我们为您过滤信息噪音，只提供最精选的AI新闻、最实用的AI工具与AI教程，助您高效获取人工智能领域的前沿动态"
-cascade:
-  type: docs
+layout: home
 ---
 
-## AI资讯日报 2026/2/21
+首页使用 Hacker News 风格列表布局
 
 ### **今日摘要**
 
