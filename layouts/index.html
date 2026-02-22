@@ -77,9 +77,9 @@
     <div class="hn-archive-section">
       <h4>2026年2月</h4>
       <div class="hn-archive-grid">
-        {{ range seq 21 | reverse }}
-        {{ $day := printf "2026-02-%02d" . }}
-        <a href="/2026-02/{{ $day }}/" class="hn-archive-link">{{ printf "%02d" . }}日</a>
+        {{ range $i := slice 21 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 }}
+        {{ $day := printf "2026-02-%02d" $i }}
+        <a href="/2026-02/{{ $day }}/" class="hn-archive-link">{{ printf "%02d" $i }}日</a>
         {{ end }}
       </div>
     </div>
