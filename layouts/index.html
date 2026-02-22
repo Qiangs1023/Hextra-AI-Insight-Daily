@@ -1,0 +1,463 @@
+{{ define "main" }}
+{{- $pages := where .Site.RegularPages "Section" "neq "" -}}
+{{- $pages = $pages | first 50 -}}
+
+<div class="hn-container">
+  <!-- 顶部导航栏 -->
+  <header class="hn-header">
+    <div class="hn-header-inner">
+      <div class="hn-brand">
+        <a href="/">{{ .Site.Title }}</a>
+        <span class="hn-tagline">精选AI新闻与工具</span>
+      </div>
+      <nav class="hn-nav">
+        <a href="/" class="hn-nav-btn active">首页</a>
+        <a href="/blog/" class="hn-nav-btn">博客</a>
+        <button class="hn-nav-btn" id="archiveBtn">归档</button>
+        <a href="/index.xml" class="hn-nav-btn" target="_blank">RSS</a>
+      </nav>
+      <div class="hn-header-right">
+        <button class="hn-nav-btn" id="langSwitch">{{ if eq .Site.Language.Lang "zh" }}EN{{ else }}中文{{ end }}</button>
+        <button class="hn-nav-btn" id="themeSwitch">🌙</button>
+      </div>
+    </div>
+    
+    <!-- 分类标签 -->
+    <div class="hn-tags">
+      <button class="hn-tag active" data-tag="all">全部</button>
+      <button class="hn-tag" data-tag="AI">AI</button>
+      <button class="hn-tag" data-tag="开源">开源</button>
+      <button class="hn-tag" data-tag="工具">工具</button>
+      <button class="hn-tag" data-tag="研究">研究</button>
+      <button class="hn-tag" data-tag="产品">产品</button>
+      <button class="hn-tag" data-tag="行业">行业</button>
+    </div>
+  </header>
+
+  <!-- 文章列表 -->
+  <main class="hn-main">
+    <div class="hn-list" id="hnList">
+      {{ range $index, $page := $pages }}
+      <article class="hn-item" data-tags="{{ with $page.Params.tags }}{{ delimit . "," }}{{ end }}">
+        <div class="hn-item-meta">
+          <span class="hn-index">{{ add $index 1 }}.</span>
+          <span class="hn-time">{{ $page.Date.Format "2006/01/02" }}</span>
+        </div>
+        <div class="hn-item-content">
+          <h3 class="hn-item-title">
+            <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
+          </h3>
+          {{ with $page.Params.description }}
+          <p class="hn-item-desc">{{ . | truncate 100 }}</p>
+          {{ end }}
+          {{ with $page.Params.tags }}
+          <div class="hn-item-tags">
+            {{ range first 3 . }}
+            <span class="hn-item-tag">{{ . }}</span>
+            {{ end }}
+          </div>
+          {{ end }}
+        </div>
+      </article>
+      {{ end }}
+    </div>
+  </main>
+
+  <!-- 底部 -->
+  <footer class="hn-footer">
+    <span>{{ .Site.Title }} © {{ now.Year }}</span>
+    <span>·</span>
+    <a href="/index.xml">RSS</a>
+  </footer>
+</div>
+
+<!-- 归档下拉菜单 -->
+<div class="hn-dropdown" id="archiveDropdown">
+  <div class="hn-dropdown-content">
+    <div class="hn-archive-section">
+      <h4>2026年2月</h4>
+      <div class="hn-archive-grid">
+        {{ range seq 21 | reverse }}
+        {{ $day := printf "2026-02-%02d" . }}
+        <a href="/2026-02/{{ $day }}/" class="hn-archive-link">{{ printf "%02d" . }}日</a>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.hn-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 16px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Header */
+.hn-header {
+  position: sticky;
+  top: 0;
+  background: var(--bg-color, #fafafa);
+  border-bottom: 1px solid var(--border-color, #e5e5e5);
+  z-index: 100;
+  padding: 12px 0;
+}
+
+html.dark .hn-header {
+  --bg-color: #1a1a1a;
+  --border-color: #333;
+}
+
+.hn-header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hn-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.hn-brand a {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f97316;
+  text-decoration: none;
+}
+
+.hn-tagline {
+  font-size: 12px;
+  color: #888;
+}
+
+.hn-nav {
+  display: flex;
+  gap: 4px;
+}
+
+.hn-nav-btn {
+  padding: 6px 12px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #f97316;
+  background: transparent;
+  border: 1px solid #f97316;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.15s;
+}
+
+.hn-nav-btn:hover,
+.hn-nav-btn.active {
+  background: #f97316;
+  color: #fff;
+}
+
+.hn-header-right {
+  display: flex;
+  gap: 4px;
+}
+
+/* Tags */
+.hn-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.hn-tag {
+  padding: 4px 10px;
+  font-size: 12px;
+  color: #666;
+  background: transparent;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+html.dark .hn-tag {
+  color: #aaa;
+  border-color: #444;
+}
+
+.hn-tag:hover,
+.hn-tag.active {
+  color: #fff;
+  background: #f97316;
+  border-color: #f97316;
+}
+
+/* Main List */
+.hn-main {
+  padding: 16px 0;
+}
+
+.hn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--border-color, #eee);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+html.dark .hn-list {
+  --border-color: #2a2a2a;
+}
+
+.hn-item {
+  display: flex;
+  gap: 12px;
+  padding: 12px 16px;
+  background: var(--bg-color, #fff);
+  transition: background 0.15s;
+}
+
+html.dark .hn-item {
+  --bg-color: #1a1a1a;
+}
+
+.hn-item:hover {
+  background: #fff7ed;
+}
+
+html.dark .hn-item:hover {
+  background: #261b12;
+}
+
+.hn-item-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 40px;
+  gap: 2px;
+}
+
+.hn-index {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f97316;
+}
+
+.hn-time {
+  font-size: 10px;
+  color: #999;
+}
+
+.hn-item-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.hn-item-title {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 4px;
+}
+
+.hn-item-title a {
+  color: var(--text-color, #333);
+  text-decoration: none;
+}
+
+.hn-item-title a:hover {
+  color: #f97316;
+}
+
+html.dark .hn-item-title a {
+  --text-color: #e5e5e5;
+}
+
+.hn-item-desc {
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 6px;
+  line-height: 1.5;
+}
+
+.hn-item-tags {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+
+.hn-item-tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  background: #f3f4f6;
+  border-radius: 4px;
+  color: #666;
+}
+
+html.dark .hn-item-tag {
+  background: #333;
+  color: #aaa;
+}
+
+/* Footer */
+.hn-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px;
+  font-size: 12px;
+  color: #888;
+  border-top: 1px solid var(--border-color, #e5e5e5);
+}
+
+.hn-footer a {
+  color: #f97316;
+  text-decoration: none;
+}
+
+/* Dropdown */
+.hn-dropdown {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: none;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+.hn-dropdown.show {
+  display: flex;
+}
+
+.hn-dropdown-content {
+  background: var(--bg-color, #fff);
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 400px;
+  width: 90%;
+  max-height: 60vh;
+  overflow-y: auto;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+html.dark .hn-dropdown-content {
+  --bg-color: #1f1f1f;
+}
+
+.hn-archive-section h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  color: #666;
+}
+
+.hn-archive-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.hn-archive-link {
+  padding: 6px;
+  text-align: center;
+  font-size: 12px;
+  color: var(--text-color, #333);
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+
+.hn-archive-link:hover {
+  background: #f97316;
+  color: #fff;
+}
+
+html.dark .hn-archive-link {
+  --text-color: #e5e5e5;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .hn-header-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .hn-nav {
+    order: 3;
+    width: 100%;
+    overflow-x: auto;
+  }
+  
+  .hn-header-right {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+  }
+  
+  .hn-archive-grid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+</style>
+
+<script>
+// 归档下拉
+document.getElementById('archiveBtn').addEventListener('click', function() {
+  document.getElementById('archiveDropdown').classList.toggle('show');
+});
+
+document.getElementById('archiveDropdown').addEventListener('click', function(e) {
+  if (e.target === this) {
+    this.classList.remove('show');
+  }
+});
+
+// 语言切换
+document.getElementById('langSwitch').addEventListener('click', function() {
+  var path = window.location.pathname;
+  if (path.startsWith('/en/')) {
+    window.location.href = path.replace('/en/', '/');
+  } else {
+    window.location.href = '/en' + path;
+  }
+});
+
+// 主题切换
+document.getElementById('themeSwitch').addEventListener('click', function() {
+  document.documentElement.classList.toggle('dark');
+  var isDark = document.documentElement.classList.contains('dark');
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  this.textContent = isDark ? '☀️' : '🌙';
+});
+
+// 标签过滤
+document.querySelectorAll('.hn-tag').forEach(function(tag) {
+  tag.addEventListener('click', function() {
+    var filter = this.dataset.tag;
+    document.querySelectorAll('.hn-tag').forEach(t => t.classList.remove('active'));
+    this.classList.add('active');
+    
+    document.querySelectorAll('.hn-item').forEach(function(item) {
+      if (filter === 'all') {
+        item.style.display = 'flex';
+      } else {
+        var tags = item.dataset.tags || '';
+        item.style.display = tags.toLowerCase().includes(filter.toLowerCase()) ? 'flex' : 'none';
+      }
+    });
+  });
+});
+</script>
+
+{{ end }}

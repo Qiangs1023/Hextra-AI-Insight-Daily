@@ -1,6 +1,10 @@
 # Hugo configuration file
 title: 数字旷野 日报
 
+author:
+  name: "数字旷野 日报"
+  email: "sunqiang323@163.com"
+
 timezone: Asia/Shanghai
 enableRobotsTXT: true
 enableGitInfo: true
@@ -15,7 +19,33 @@ services:
 outputs:
   home: [html]
   page: [html]
-  section: [html, rss]
+  section: [html]
+  taxonomy: [html]
+  term: [html]
+
+disableKinds:
+  - RSS
+
+menu:
+  main:
+    - identifier: documentation
+      name: 日报
+      pageRef: /
+      weight: 1
+    - identifier: blog
+      name: 博客
+      pageRef: /blog
+      weight: 2
+    - identifier: about      
+      name: 关于我
+      url: "https://github.com/Qiangs1023"
+      weight: 3
+    - identifier: github   
+      name: GitHub
+      weight: 4
+      url: "https://github.com/Qiangs1023/Hextra-AI-Insight-Daily"
+      params:
+        icon: github
 
 # import hextra as module
 module:
