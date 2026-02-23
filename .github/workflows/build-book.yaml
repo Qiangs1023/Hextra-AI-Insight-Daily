@@ -1,6 +1,6 @@
 name: Update Content from Daily Notes
 on:
-  # 允许在 GitHub Actions 页面手动触发此工作流
+  # 允许在 GitHub Actions 页面手动触发此工作流（备用）
   workflow_dispatch:
     inputs:
       source_repo:
@@ -11,10 +11,6 @@ on:
         description: '要拉取的源分支'
         required: true
         default: 'book'
-
-  # 也可以设置定时触发，例如每天凌晨1点 (UTC时间)
-  schedule:
-    - cron: '0 22 * * *' # 每天 UTC 时间 0 点运行 (北京时间早上6点)
 
 jobs:
   build-and-commit:

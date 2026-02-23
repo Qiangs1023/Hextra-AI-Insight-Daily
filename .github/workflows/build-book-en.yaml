@@ -4,6 +4,10 @@ name: Translate New and Specific EN Content
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["main"]
+    paths:
+      - 'content/cn/**'
   schedule:
     - cron: '10 22 * * *' # 每天 UTC 时间 0 点运行 (北京时间6点10)
 
