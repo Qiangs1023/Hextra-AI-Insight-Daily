@@ -379,13 +379,12 @@
 {{- $pages := where .Site.RegularPages "Section" "!=" "" -}}
 {{- $allPages := sort $pages "Date" "desc" -}}
 {{- $pages := slice -}}
-{{- $targetDate := "" -}}
 {{- range $i := seq 0 30 -}}
-  {{- $checkDate := (now.AddDate 0 0 (mul $i -1)).Format "2006-01-02" -}}
+  {{- $offset := int (mul $i -1) -}}
+  {{- $checkDate := (now.AddDate 0 0 $offset).Format "2006-01-02" -}}
   {{- $dayPages := where $allPages "Date.Format" "2006-01-02" $checkDate -}}
   {{- if gt (len $dayPages) 0 -}}
     {{- $pages = $dayPages -}}
-    {{- $targetDate = $checkDate -}}
     {{- break -}}
   {{- end -}}
 {{- end -}}
