@@ -253,6 +253,138 @@
       color: #aaa;
     }
 
+    /* Article Content */
+    .hn-article {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+
+    html.dark .hn-article {
+      background: #1f1f1f;
+    }
+
+    .hn-article-header {
+      margin-bottom: 20px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    html.dark .hn-article-header {
+      border-color: #333;
+    }
+
+    .hn-article-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #333;
+      margin: 0 0 8px;
+    }
+
+    html.dark .hn-article-title {
+      color: #e5e5e5;
+    }
+
+    .hn-article-date {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .hn-article-content {
+      font-size: 15px;
+      line-height: 1.8;
+      color: #444;
+    }
+
+    html.dark .hn-article-content {
+      color: #c0c0c0;
+    }
+
+    .hn-article-content h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin: 24px 0 12px;
+      color: #333;
+    }
+
+    html.dark .hn-article-content h2 {
+      color: #e5e5e5;
+    }
+
+    .hn-article-content h3 {
+      font-size: 17px;
+      font-weight: 600;
+      margin: 20px 0 10px;
+      color: #444;
+    }
+
+    html.dark .hn-article-content h3 {
+      color: #d0d0d0;
+    }
+
+    .hn-article-content p {
+      margin: 12px 0;
+    }
+
+    .hn-article-content a {
+      color: #f97316;
+      text-decoration: none;
+    }
+
+    .hn-article-content a:hover {
+      text-decoration: underline;
+    }
+
+    .hn-article-content code {
+      background: #f3f4f6;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+
+    html.dark .hn-article-content code {
+      background: #333;
+    }
+
+    .hn-article-content pre {
+      background: #f3f4f6;
+      padding: 16px;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-size: 14px;
+    }
+
+    html.dark .hn-article-content pre {
+      background: #2a2a2a;
+    }
+
+    .hn-article-content ul, .hn-article-content ol {
+      padding-left: 24px;
+      margin: 12px 0;
+    }
+
+    .hn-article-content li {
+      margin: 6px 0;
+    }
+
+    .hn-article-content blockquote {
+      border-left: 4px solid #f97316;
+      margin: 16px 0;
+      padding-left: 16px;
+      color: #666;
+    }
+
+    html.dark .hn-article-content blockquote {
+      color: #999;
+    }
+
+    .hn-article-content img {
+      max-width: 100%;
+      border-radius: 8px;
+      margin: 16px 0;
+    }
+
     /* Footer */
     .hn-footer {
       display: flex;
@@ -428,33 +560,21 @@
     </div>
   </header>
 
-  <!-- 文章列表 -->
+  <!-- 当天日报内容 -->
   <main class="hn-main">
-    <div class="hn-list" id="hnList">
-      {{ range $index, $page := $pages }}
-      <article class="hn-item" data-tags="{{ with $page.Params.tags }}{{ delimit . "," }}{{ end }}">
-        <div class="hn-item-meta">
-          <span class="hn-index">{{ add $index 1 }}.</span>
-          <span class="hn-time">{{ if $page.Date }}{{ $page.Date.Format "2006/01/02" }}{{ else if $page.Lastmod }}{{ $page.Lastmod.Format "2006/01/02" }}{{ else }}{{ $page.File.TranslationBaseName }}{{ end }}</span>
-        </div>
-        <div class="hn-item-content">
-          <h3 class="hn-item-title">
-            <a href="{{ $page.Permalink }}">{{ $page.Title }}</a>
-          </h3>
-          {{ with $page.Params.description }}
-          <p class="hn-item-desc">{{ . | truncate 100 }}</p>
-          {{ end }}
-          {{ with $page.Params.tags }}
-          <div class="hn-item-tags">
-            {{ range first 3 . }}
-            <span class="hn-item-tag">{{ . }}</span>
-            {{ end }}
-          </div>
-          {{ end }}
-        </div>
-      </article>
-      {{ end }}
-    </div>
+    {{ range $index, $page := $pages }}
+    {{ if eq $index 0 }}
+    <article class="hn-article">
+      <div class="hn-article-header">
+        <h1 class="hn-article-title">{{ $page.Title }}</h1>
+        <span class="hn-article-date">{{ if $page.Date }}{{ $page.Date.Format "2006/01/02" }}{{ else }}{{ $page.File.TranslationBaseName }}{{ end }}</span>
+      </div>
+      <div class="hn-article-content">
+        {{ $page.Content }}
+      </div>
+    </article>
+    {{ end }}
+    {{ end }}
   </main>
 
   <!-- 底部 -->
