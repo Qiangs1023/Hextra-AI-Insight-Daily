@@ -376,15 +376,18 @@
   </script>
 </head>
 <body>
-{{- $pages := where .Site.RegularPages "Section" "!=" "" -}}
-{{- $allPages := sort $pages "Date" "desc" -}}
+{{- $allPages := where .Site.RegularPages "Section" "!=" "" -}}
 {{- $pages := slice -}}
 {{- range $i := seq 0 30 -}}
   {{- $offset := int (mul $i -1) -}}
   {{- $checkDate := (now.AddDate 0 0 $offset).Format "2006-01-02" -}}
-  {{- $dayPages := where $allPages "Date.Format" "2006-01-02" $checkDate -}}
-  {{- if gt (len $dayPages) 0 -}}
-    {{- $pages = $dayPages -}}
+  {{- range $allPages -}}
+    {{- $fileName := .File.TranslationBaseName -}}
+    {{- if eq $fileName $checkDate -}}
+      {{- $pages = $pages | append . -}}
+    {{- end -}}
+  {{- end -}}
+  {{- if gt (len $pages) 0 -}}
     {{- break -}}
   {{- end -}}
 {{- end -}}
